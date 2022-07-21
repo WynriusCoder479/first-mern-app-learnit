@@ -1,7 +1,7 @@
 export const apiUrl =
 	process.env.NODE_ENV !== 'production'
-		? 'https://mern-app-learnit-2.herokuapp.com/api'
-		: 'deployUrl'
+		? 'https://localhost:5000/api'
+		: 'https://mern-app-learnit-2.herokuapp.com/api'
 
 export const LOCAL_STORAGE_TOKEN_NAME = 'learnit-mern-app'
 
