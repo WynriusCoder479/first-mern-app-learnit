@@ -31,8 +31,8 @@ const authPath = '/api/auth'
 const postPath = '/api/posts'
 
 const app = express()
+app.use('*', cors({ origin: 'http://localhost:3000', credentials: true }))
 app.use(express.json())
-app.use(cors())
 
 app.use(authPath, registerRoute)
 app.use(authPath, loginRoute)
