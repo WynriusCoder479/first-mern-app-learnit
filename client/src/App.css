@@ -39,7 +39,7 @@
 
 .landing-inner .landing-inner-mobile h1,
 .landing-inner .landing-inner-mobile h4,
-.landing-inner .landing-inner p {
+.landing-inner .landing-inner-mobile p {
 	color: white;
 }
 
@@ -142,6 +142,4 @@ button.post-button.btn:active {
 .toast-position-mobile {
 	position: fixed;
 	top: 10%;
-	right: auto;
-	left: auto;
 }
