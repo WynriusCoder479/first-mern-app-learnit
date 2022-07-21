@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const registerRoute = require('./routes/auth/register')
 const loginRoute = require('./routes/auth/login')
@@ -26,26 +27,13 @@ const connrctDB = async () => {
 }
 
 connrctDB()
+const PORT = process.env.PORT || 5000
 const authPath = '/api/auth'
 const postPath = '/api/posts'
-const accessControlAllow = 'Access-Control-Allow'
 
 const app = express()
-app.use((req, res, next) => {
-	res.setHeader(`${accessControlAllow}-Origin`, process.env.REACT_URL)
-	res.setHeader(
-		`${accessControlAllow}-Methods`,
-		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-	)
-	res.setHeader(
-		`${accessControlAllow}-Headers`,
-		'X-Requested-With, content-type'
-	)
-	res.setHeader(`${accessControlAllow}-Credentials`, true)
-
-	next()
-})
 app.use(express.json())
+app.use(cors({ credentials: true }))
 
 app.use(authPath, registerRoute)
 app.use(authPath, loginRoute)
@@ -54,7 +42,5 @@ app.use(postPath, createPostRoute)
 app.use(postPath, realAllPostRoute)
 app.use(postPath, updatePostRoute)
 app.use(postPath, deletePostRoute)
-
-const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
