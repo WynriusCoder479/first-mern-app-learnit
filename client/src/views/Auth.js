@@ -4,11 +4,16 @@ import { AuthContext } from '../contexts/AuthContext'
 import { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
+import useViewport from './customHook/useViewport'
 
 const Auth = ({ authRoute }) => {
 	const {
 		authState: { authLoading, isAuthenticated }
 	} = useContext(AuthContext)
+
+	const viewPort = useViewport()
+
+	const isMobile = viewPort.width <= 1024
 
 	let body
 	if (authLoading)
@@ -28,7 +33,7 @@ const Auth = ({ authRoute }) => {
 	return (
 		<div className='landing'>
 			<div className='dark-overlay'>
-				<div className='landing-inner'>
+				<div className={isMobile ? 'landing-inner-mobile' : 'landing-inner'}>
 					<h1>LearnIt</h1>
 					<h4>Let us make your learning easier and more effective</h4>
 					{body}

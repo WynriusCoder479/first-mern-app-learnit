@@ -19,13 +19,27 @@
 	text-align: center;
 }
 
+.landing-inner-mobile {
+	height: 100%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
 .landing-inner form {
 	width: 30%;
 }
 
-.landing-inner h1,
-.landing-inner h4,
-.landing-inner p {
+.landing-inner-mobile form {
+	width: 80%;
+}
+
+.landing-inner .landing-inner-mobile h1,
+.landing-inner .landing-inner-mobile h4,
+.landing-inner .landing-inner p {
 	color: white;
 }
 
