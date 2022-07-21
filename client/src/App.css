@@ -88,6 +88,14 @@ button.post-button.btn:active {
 	border: none;
 }
 
+.btn-floating-mobile {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	background: transparent;
+	border: none;
+}
+
 .btn-floating:hover {
 	background: transparent;
 }
@@ -123,4 +131,17 @@ button.post-button.btn:active {
 /* Post title */
 .post-title {
 	margin-bottom: 0.5rem;
+}
+
+.toast-position {
+	position: fixed;
+	top: 10%;
+	right: 10px;
+}
+
+.toast-position-mobile {
+	position: fixed;
+	top: 10%;
+	right: auto;
+	left: auto;
 }

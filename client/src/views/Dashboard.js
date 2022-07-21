@@ -15,6 +15,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import learnItLogo from '../assets/logo.svg'
 import UpdatePostModal from '../components/posts/UpdatePostModal'
+import useViewport from './customHook/useViewport'
 
 const Dashboard = () => {
 	//context
@@ -38,6 +39,12 @@ const Dashboard = () => {
 		getPosts()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
+
+	//responsive
+
+	const viewPort = useViewport()
+
+	const isMobile = viewPort.width <= 1024
 
 	//get datetime
 
@@ -84,13 +91,20 @@ const Dashboard = () => {
 					placement='left'
 					overlay={<Tooltip>Add a new thing to learn</Tooltip>}>
 					<Button
-						className='btn-floating'
+						className={isMobile ? 'btn-floating-mobile' : 'btn-floating'}
 						onClick={setShowAddPostModal.bind(this, true)}>
-						<img src={addIcon} alt='add icon' width={60} height={60} />
+						<img
+							src={addIcon}
+							alt='add icon'
+							width={isMobile ? 30 : 60}
+							height={isMobile ? 30 : 60}
+						/>
 					</Button>
 				</OverlayTrigger>
 			</Container>
 		)
+
+	const toastPosition = isMobile ? 'toast-position-mobile' : 'toast-position'
 
 	return (
 		<>
@@ -99,8 +113,7 @@ const Dashboard = () => {
 			{post !== null && <UpdatePostModal />}
 			<Toast
 				show={show}
-				style={{ position: 'fixed', top: '10%', right: '5px' }}
-				className={`bg-${type} text-white`}
+				className={`bg-${type} text-white ${toastPosition}`}
 				onClose={setShowToast.bind(this, {
 					show: false,
 					message: '',
