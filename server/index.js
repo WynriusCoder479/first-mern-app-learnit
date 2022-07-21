@@ -11,7 +11,7 @@ const realAllPostRoute = require('./routes/post/readPost')
 const updatePostRoute = require('./routes/post/updatePost')
 const deletePostRoute = require('./routes/post/deletePost')
 
-const DbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mern-learnit-list.js5oz.mongodb.net/?retryWrites=true&w=majority`
+const DbUrl = process.env.MONGODB_URL
 const connrctDB = async () => {
 	try {
 		await mongoose.connect(DbUrl, {
