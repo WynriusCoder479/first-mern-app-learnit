@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useContext, useState } from 'react'
 import { PostContext } from '../../contexts/PostContext'
+import AlertMessage from '../layout/AlertMessage'
 
 const AddPostModal = () => {
 	//context
@@ -13,6 +14,8 @@ const AddPostModal = () => {
 		setNewPostForm({ title: '', description: '', url: '', status: 'TO LEARN' })
 		setShowAddPostModal(false)
 	}
+
+	const [alert, setAlert] = useState(null)
 
 	const onSubmit = async event => {
 		event.preventDefault()
@@ -27,13 +30,12 @@ const AddPostModal = () => {
 				type: success ? 'success' : 'danger'
 			})
 		} else {
-			setShowToast({
-				show: true,
-				message,
-				type: success ? 'success' : 'danger'
-			})
-
 			setNewPostForm({ title: '', description, url, status: 'TO LEARN' })
+			setAlert({ type: 'danger', message })
+
+			setTimeout(() => {
+				setAlert(null)
+			}, 3000)
 		}
 	}
 
@@ -60,6 +62,7 @@ const AddPostModal = () => {
 			<Form onSubmit={onSubmit}>
 				<Modal.Body>
 					<Form.Group className='mb-4'>
+						<AlertMessage info={alert} />
 						<Form.Control
 							type='text'
 							placeholder='Title'
