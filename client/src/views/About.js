@@ -30,7 +30,7 @@ const About = () => {
 	const isMobile = viewPort.width <= 1024
 
 	const linkSize = isMobile ? 'fs-6' : 'fs-4'
-	const iconSize = isMobile ? '20' : { iconSize }
+	const iconSize = isMobile ? '20' : '40'
 
 	return (
 		<>
