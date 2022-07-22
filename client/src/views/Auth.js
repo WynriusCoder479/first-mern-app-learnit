@@ -34,8 +34,10 @@ const Auth = ({ authRoute }) => {
 		<div className='landing'>
 			<div className='dark-overlay'>
 				<div className={isMobile ? 'landing-inner-mobile' : 'landing-inner'}>
-					<h1>LearnIt</h1>
-					<h4>Let us make your learning easier and more effective</h4>
+					<h1 className='text-white'>LearnIt</h1>
+					<h4 className='text-white'>
+						Let us make your learning easier and more effective
+					</h4>
 					{body}
 				</div>
 			</div>
