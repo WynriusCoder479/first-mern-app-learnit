@@ -18,8 +18,23 @@ const AddPostModal = () => {
 		event.preventDefault()
 
 		const { success, message } = await addPost(newPostForm)
-		closeDialog()
-		setShowToast({ show: true, message, type: success ? 'success' : 'danger' })
+
+		if (success) {
+			closeDialog()
+			setShowToast({
+				show: true,
+				message,
+				type: success ? 'success' : 'danger'
+			})
+		} else {
+			setShowToast({
+				show: true,
+				message,
+				type: success ? 'success' : 'danger'
+			})
+
+			setNewPostForm({ title: '', description, url, status: 'TO LEARN' })
+		}
 	}
 
 	const [newPostForm, setNewPostForm] = useState({
