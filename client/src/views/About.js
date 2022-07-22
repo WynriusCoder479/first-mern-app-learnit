@@ -6,6 +6,7 @@ import Messenger from '../assets/messenger.svg'
 import Facebook from '../assets/facebook.svg'
 import NotiToast from '../components/about/NotiToast'
 import { useState } from 'react'
+import useViewport from './customHook/useViewport'
 
 const About = () => {
 	//set email to Clipboard
@@ -25,6 +26,12 @@ const About = () => {
 		setShowNotiToast(true)
 	}
 
+	const viewPort = useViewport()
+	const isMobile = viewPort.width <= 1024
+
+	const linkSize = isMobile ? 'fs-6' : 'fs-4'
+	const iconSize = isMobile ? '20' : { iconSize }
+
 	return (
 		<>
 			<h1 style={{ color: '#757d8a', textAlign: 'center', marginTop: '15px' }}>
@@ -37,15 +44,15 @@ const About = () => {
 							<img
 								src={Mail}
 								alt='gmail'
-								width='40'
-								height='40'
+								width={iconSize}
+								height={iconSize}
 								style={{ marginRight: '5px' }}
 							/>
 						</th>
 						<th>
 							<Button
 								variant='link'
-								className='fs-4'
+								className={linkSize}
 								onClick={() => copyItemToClipBoard(gmailUrl)}>
 								{gmailUrl.split(' ')[1]}
 							</Button>
@@ -56,15 +63,15 @@ const About = () => {
 							<img
 								src={Phone}
 								alt='Phone'
-								width='40'
-								height='40'
+								width={iconSize}
+								height={iconSize}
 								style={{ marginRight: '5px' }}
 							/>
 						</th>
 						<th>
 							<Button
 								variant='link'
-								className='fs-4'
+								className={linkSize}
 								onClick={() => copyItemToClipBoard(phoneNumber)}>
 								{phoneNumber.split(' ')[1]}
 							</Button>
@@ -75,8 +82,8 @@ const About = () => {
 							<img
 								src={gitHub}
 								alt='git'
-								width='40'
-								height='40'
+								width={iconSize}
+								height={iconSize}
 								style={{ marginRight: '5px' }}
 							/>
 						</th>
@@ -85,7 +92,7 @@ const About = () => {
 								variant='link'
 								href={`https://${gitUrl}`}
 								target='_blank'
-								className='fs-4'>
+								className={linkSize}>
 								{gitUrl}
 							</Button>
 						</th>
@@ -95,8 +102,8 @@ const About = () => {
 							<img
 								src={Facebook}
 								alt='facebook'
-								width='40'
-								height='40'
+								width={iconSize}
+								height={iconSize}
 								style={{ marginRight: '5px' }}
 							/>
 						</th>
@@ -105,7 +112,7 @@ const About = () => {
 								variant='link'
 								href={`https://${facebookUrl}`}
 								target='_blank'
-								className='fs-4'>
+								className={linkSize}>
 								{facebookUrl}
 							</Button>
 						</th>
@@ -115,8 +122,8 @@ const About = () => {
 							<img
 								src={Messenger}
 								alt='messenger'
-								width='40'
-								height='40'
+								width={iconSize}
+								height={iconSize}
 								style={{ marginRight: '5px' }}
 							/>
 						</th>
@@ -125,7 +132,7 @@ const About = () => {
 								variant='link'
 								href={`https://${messengerUrl}`}
 								target='_blank'
-								className='fs-4'>
+								className={linkSize}>
 								messenger.com/Wynrius
 							</Button>
 						</th>
