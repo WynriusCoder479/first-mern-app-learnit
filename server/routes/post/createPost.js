@@ -15,12 +15,10 @@ router.post('/', verifyToken, async (req, res) => {
 			.json({ success: false, message: 'Titile is required' })
 
 	if (title.length >= 20)
-		return res
-			.status(400)
-			.json({
-				success: false,
-				message: 'Title too long. Title is not more 20 character'
-			})
+		return res.status(400).json({
+			success: false,
+			message: 'Title too long. Title not length more 20 character'
+		})
 
 	try {
 		const newPost = new Post({
